@@ -1,1 +1,1 @@
-Ejercicios PC 2020 COVID-19
+Ejercicios PC 2020 ~~COVID-19~~
