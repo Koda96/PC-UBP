@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <pthread.h>
 
-const int T= 99999;
+int T;
 int THREADS;
 
 typedef struct {
@@ -15,9 +15,12 @@ void Array(int*);
 void * Buscar(void*);
 
 int main(){
-	printf("Ingrese la cantidad de hilos con la cual se va a buscar \n");
-	scanf("%d", &THREADS);
+	printf("Ingrese el tamano del array");
+	scanf("%d", &T);
 
+	printf("Ingrese la cantidad de hilos con la cual se va a buscar (2-9) \n");
+	scanf("%d", &THREADS);
+	
 	Data * data = (Data*) calloc (THREADS, sizeof(Data));
 	int * array = (int *) calloc (T, sizeof(int));
 

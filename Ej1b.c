@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <pthread.h>
 
-const int T= 99999;
+int T;
 const int THREADS = 2;
 
 typedef struct {
@@ -15,6 +15,10 @@ void Array(int*);
 void * Buscar(void*);
 
 int main(){
+
+	printf("Ingrese el tamano del array");
+	scanf("%d", &T);
+
 	Data * data = (Data*) calloc (THREADS, sizeof(Data));
 	int * array = (int *) calloc (T, sizeof(int));
 

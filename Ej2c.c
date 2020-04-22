@@ -3,7 +3,8 @@
 #include <unistd.h>
 #include <pthread.h>
 
-const int T= 99999;
+int T;
+const int P=500;
 int THREADS;
 int may=-1;
 int pos=-1;
@@ -17,7 +18,10 @@ void Array(int*);
 void * Buscar(void*);
 
 int main(){
-	printf("Ingrese la cantidad de hilos con la cual se va a buscar \n");
+	printf("Ingrese el tamano del array");
+	scanf("%d", &T);
+
+	printf("Ingrese la cantidad de hilos con la cual se va a buscar (2-9) \n");
 	scanf("%d", &THREADS);
 	Data * data = (Data*) calloc (THREADS, sizeof(Data));
 	int * array = (int *) calloc (T, sizeof(int));
@@ -49,17 +53,17 @@ int main(){
 
 void Array ( int *array){
 	srand(time(0));
-	int random = rand() % T;
+	int random = rand() % P-1;
 
 	for (int i = 0; i<T; ++i){
 		array[i]=random;
-		random = rand() % T;
+		random = rand() % P-1;
 	}
 
 	int randomPos = rand() % T;
 
 
-	array[randomPos]=random;
+	array[randomPos]=P;
 }
 
 void * Buscar (void *tmp){
@@ -74,5 +78,7 @@ void * Buscar (void *tmp){
 		++c;
 		++i;
 	}
+	printf("Cambio de THREAD\n");
+	printf("Ultima posicion %d\n",i);
 	pthread_exit(NULL);
 }
